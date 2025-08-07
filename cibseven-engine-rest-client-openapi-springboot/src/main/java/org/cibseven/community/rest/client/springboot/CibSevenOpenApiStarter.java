@@ -13,14 +13,9 @@ public class CibSevenOpenApiStarter {
   private final String password;
 
   public CibSevenOpenApiStarter(
-      @Value("${cibseven.bpm.client.base-url:#{null}}")
-          String basePath,
-      @Value(
-              "${cibseven.bpm.client.basic-auth.username:#{null}}")
-          String username,
-      @Value(
-              "${cibseven.bpm.client.basic-auth.password:#{null}}")
-          String password) {
+      @Value("${cibseven.bpm.client.base-url:#{null}}") String basePath,
+      @Value("${cibseven.bpm.client.basic-auth.username:#{null}}") String username,
+      @Value("${cibseven.bpm.client.basic-auth.password:#{null}}") String password) {
     this.basePath = basePath;
     this.username = username;
     this.password = password;
