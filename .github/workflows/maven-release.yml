@@ -35,18 +35,17 @@ jobs:
       - name: Deploy SNAPSHOT / Release
         uses: cibseven-community-hub/community-action-maven-release@cibseven-action-maven-release
         with:
+          # release-version empty if no release context
           release-version: ${{ github.event.release.tag_name }}
           deploy-to-artifacts: ${{ inputs.deploy_to_artifacts }}
           deploy-to-maven-central: ${{ inputs.deploy_to_maven_central }}
           nexus-usr: ${{ secrets.NEXUS_USR }}
           nexus-psw: ${{ secrets.NEXUS_PSW }}
-          sonatype-central-portal-usr: ${{ secrets.COMMUNITY_HUB_MAVEN_CENTRAL_CP_USR }}
-          sonatype-central-portal-psw: ${{ secrets.COMMUNITY_HUB_MAVEN_CENTRAL_CP_PSW }}
           maven-gpg-passphrase: ${{ secrets.MAVEN_CENTRAL_GPG_SIGNING_KEY_PASSPHRASE }}
-          maven-auto-release-after-close: true
           github-token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.event.release.target_commitish || github.ref_name }}
         id: release
+      # Upload archived artifacts as Github assets
       - if: github.event.release
         name: Attach artifacts to GitHub Release (Release only)
         uses: actions/upload-release-asset@v1
