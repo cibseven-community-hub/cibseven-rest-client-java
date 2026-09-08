@@ -32,7 +32,7 @@
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
 
-    <cibseven.version>2.3.0-SNAPSHOT</cibseven.version>
+    <cibseven.version>2.2.0</cibseven.version>
     <springboot.version>4.0.6</springboot.version>
   </properties>
 
